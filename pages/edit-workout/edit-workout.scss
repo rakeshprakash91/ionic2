@@ -1,0 +1,32 @@
+.workoutLabel {
+  width: 165px;
+  word-break: break-all;
+}
+
+.workoutInput {
+  width: 100%;
+  border: 1px solid lightgray;
+  margin: 5px 0;
+  border-radius: 3px;
+  height: 28px;
+}
+
+.text-input-md {
+  margin: 4px;
+}
+
+.addBtn {
+  margin: 0 auto;
+  display: block;
+}
+
+.item-input {
+  .label-md {
+    color: #168fd6;
+  }
+}
+
+.label-md {
+  color: #168fd6;
+  // font-family: cursive;
+}

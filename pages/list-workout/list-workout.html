@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>List Of {{part}} Workout</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding *ngIf="workouts">
+  <ion-list *ngFor="let workout of workouts; let i = index">
+    <ion-list-header>
+      <strong>
+        {{workout.date | date }}
+      </strong>
+      <ion-icon (click)="editWorkout(workout)" name="md-create" item-right></ion-icon>
+      <ion-icon (click)="deleteWorkout(workout)" name="md-trash" item-right></ion-icon>
+    </ion-list-header>
+    <ion-item *ngFor="let detail of workout.detail">
+      <ion-label id="lblLeft">
+        {{detail.name}}
+      </ion-label>
+      <ion-label item-right id="lblRight">
+        {{detail.reps}}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

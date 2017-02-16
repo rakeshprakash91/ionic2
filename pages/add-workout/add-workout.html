@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Add {{bodyPart}} Workout</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <form action="" (submit)="onSubmit()">
+   
+        <ion-list no-lines>
+            <ion-item *ngFor="let workout of exerciseList; let i = index">
+                <ion-label class="workoutLabel">
+                    {{workout}}
+                </ion-label>
+                <ion-input class="workoutInput" type="text" [(ngModel)]="field[i]" name="field" valu
+                =""></ion-input>
+
+            </ion-item>
+        </ion-list>
+        <ion-list>
+            <ion-item>
+                <button type="submit" ion-button color="secondary" class="addBtn">Add Workout</button>
+            </ion-item>
+        </ion-list>
+    </form>
+
+</ion-content>
