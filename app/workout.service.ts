@@ -4,7 +4,7 @@ import "rxjs/Rx";
 
 @Injectable()
 export class WorkoutService {
-    apiKey = "-c3C0o-K675OK01VBZsBMYRRQx4DV8Bd";
+    apiKey = "";
     serviceUrl = "https://api.mlab.com/api/1/databases/workout/collections/";
     constructor(private http: Http) {
     }
