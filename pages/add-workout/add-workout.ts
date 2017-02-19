@@ -1,4 +1,4 @@
-import { AddWorkoutListPage } from './../add-workout-list/add-workout-list';
+import { ListBodyPartsPage } from './../list-body-part/list-body-part';
 import { WorkoutCollection } from './../../workout-collection';
 import { BodyParts } from './../../body-part';
 import { Component } from '@angular/core';
@@ -24,8 +24,8 @@ export class AddWorkoutPage {
         private alert: AlertPage,
         private workoutCollection: WorkoutCollection,
         public loading: LoadingController) {
-        this.exerciseList = navParams.get('collection');
         this.bodyPart = navParams.get("bodyPart");
+        this.exerciseList = JSON.parse(localStorage.getItem('workout-collection'))[this.bodyPart]['workout'];
         for (let key in Object.keys(this.field)) {
             this.field[key] = ""
         }
@@ -43,7 +43,6 @@ export class AddWorkoutPage {
         for (let i = 0; i < this.exerciseList.length; i++) {
             this.saveData[this.exerciseList[i]] = this.field[i] || 0;
         }
-        console.log(this.saveData)
         this.workoutService.addWorkout(this.bodyPart.toLowerCase(), this.saveData).subscribe(res => {
             this.alert.showAlert('Success', 'Added Workout Successfully!!!');
             this.loadSavingPopup.dismiss();
@@ -52,7 +51,7 @@ export class AddWorkoutPage {
             this.alert.showAlert('Error', 'Please try after some time!');
         },
             () => {
-                this.navCtrl.setRoot(AddWorkoutListPage, {}, {
+                this.navCtrl.setRoot(ListBodyPartsPage, {}, {
                     animate: true,
                     animation: "ios-transition",
                     direction: "forward",

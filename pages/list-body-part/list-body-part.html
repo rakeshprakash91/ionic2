@@ -1,17 +1,23 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
+    <!--<button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Workout History</ion-title>
+    </button>-->
+    <ion-title>Workout</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let part of parts" (click)="selectBodyPart($event, part)">
-      <ion-icon name="pulse" item-left></ion-icon>
-      <h2>{{part}}</h2>
-      <ion-icon name="ios-arrow-forward" item-right></ion-icon>
-    </ion-item>
+    <ion-item-sliding *ngFor="let part of parts">
+      <ion-item  (click)="selectBodyPart($event, part)">
+        <ion-icon name="ios-eye" item-left></ion-icon>
+        {{part}}
+      </ion-item>
+      <ion-item-options side="right">
+        <button color = "#168fd6" class= "listBtn" ion-button (click)="partSelected($event, part)">
+          <ion-icon name="md-add"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 </ion-content>

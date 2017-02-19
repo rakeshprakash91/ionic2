@@ -6,6 +6,7 @@ export class BodyParts{
         "Core",
         "Biceps",
         "Triceps",
-        "Cardio"
+        "Cardio",
+        "Abs"
     ]
 }
