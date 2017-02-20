@@ -1,3 +1,4 @@
+import { EditWorkoutPage } from './../edit-workout/edit-workout';
 import { ListBodyPartsPage } from './../list-body-part/list-body-part';
 import { WorkoutCollection } from './../../workout-collection';
 import { BodyParts } from './../../body-part';
@@ -48,7 +49,21 @@ export class AddWorkoutPage {
             this.loadSavingPopup.dismiss();
         }, (error) => {
             this.loadSavingPopup.dismiss();
-            this.alert.showAlert('Error', 'Please try after some time!');
+            this.alert.showAlert('Warning', 'Please connect to internet to save data permanently!');
+            var tempAry = [];
+            //check if data present, if present then retrieve it and push new data to it
+            if (localStorage.getItem(this.bodyPart)) {
+                tempAry = JSON.parse(localStorage.getItem(this.bodyPart));
+                tempAry.push(this.saveData);
+                localStorage.removeItem(this.bodyPart);
+                localStorage.setItem(this.bodyPart, JSON.stringify(tempAry))
+            }
+            else {
+                tempAry.push(this.saveData);
+                localStorage.setItem(this.bodyPart, JSON.stringify(tempAry));
+            }
+
+
         },
             () => {
                 this.navCtrl.setRoot(ListBodyPartsPage, {}, {

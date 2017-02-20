@@ -69,6 +69,11 @@ export class WorkoutCollection {
             "workout": [
                 "Tredmill"
             ]
+        },
+        "Abs":{
+             "workout": [
+                "Leg Raises"
+            ]
         }
     }
 }

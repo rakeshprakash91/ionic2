@@ -4,12 +4,15 @@ import "rxjs/Rx";
 
 @Injectable()
 export class WorkoutService {
-    apiKey = "-c3C0o-K675OK01VBZsBMYRRQx4DV8Bd";
+    apiKey = "";
     serviceUrl = "https://api.mlab.com/api/1/databases/workout/collections/";
     constructor(private http: Http) {
     }
     getWorkout(workoutFor : any) {
         return this.http.get(this.serviceUrl +workoutFor+"?apiKey="+this.apiKey).map(res => res.json())
+    }
+    getWorkoutCount(workoutFor : any) {
+        return this.http.get(this.serviceUrl +workoutFor+"?apiKey="+this.apiKey+"&c=true").map(res => res.json())
     }
     addWorkout(workoutFor : any, data : any) {
         var headers = new Headers();
